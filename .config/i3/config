@@ -22,6 +22,8 @@ exec timeout 5 nitrogen --restore >> /dev/null
 set $mod Mod4
 bindsym $mod+c exec dolphin
 bindsym $mod+Return exec konsole
+bindsym XF86LaunchA exec konsole
+bindsym XF86LaunchB exec firefox
 bindsym $mod+d exec rofi -dpi 150 -show run -theme /home/matthias/.config/rofi/one_dark
 bindsym $mod+Shift+d exec rofi -dpi 150 -show window -theme /home/matthias/.config/rofi/one_dark
 bindsym $mod+o exec echo $(i3status) >> ./path.log
@@ -93,7 +95,7 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
-set $ws3 "3"
+set $ws3 "3 (Firefox)"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -101,6 +103,11 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+# -------------------- Assign workspaces --------------------
+# Firefox on 3
+assign [class="Firefox"] $ws3
+
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
