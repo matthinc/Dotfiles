@@ -1,17 +1,17 @@
 [Desktop Entry]
-DefaultProfile=Profile 1.profile
+DefaultProfile=Matthias.profile
 
 [Favorite Profiles]
-Favorites=
+Favorites=Matthias.profile
 
 [KonsoleWindow]
 ShowMenuBarByDefault=false
 
 [MainWindow]
-Height 1600=1517
+Height 1600=1523
 Height 800=781
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAACgAAAAYVAAAABAAAAAQAAAAIAAAACPwAAAAA
+State=AAAA/wAAAAD9AAAAAAAACgAAAAYXAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
 Width 1280=1280
-Width 2560=1251
+Width 2560=1254
