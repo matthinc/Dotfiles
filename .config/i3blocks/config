@@ -1,0 +1,9 @@
+[battery]
+command=bash ~/.config/i3blocks/bat.sh
+interval=10
+label=
+color=#00ffff
+
+[time]
+command=date +" %d.%m.%Y  %H:%M"
+interval=5
