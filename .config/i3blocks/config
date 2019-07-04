@@ -1,3 +1,12 @@
+[twitter]
+command=bash ~/.config/i3blocks/hashtags.sh
+interval=1000
+
+[weather]
+command=bash ~/.config/i3blocks/weather.sh
+interval=1000
+label=
+
 [memory]
 command=bash ~/.config/i3blocks/memory.sh
 label=
@@ -17,6 +26,6 @@ label=
 command=date +" %d.%m.%Y  %H:%M"
 interval=5
 
-[name]
+[kernel]
 command=echo  $(uname -r | cut -d'-' -f1)
 interval=once
