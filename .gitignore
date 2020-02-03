@@ -1,6 +1,7 @@
 *
 !.gitignore
 !.zshrc
+!.emacs
 
 !.config
 !.config/i3

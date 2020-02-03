@@ -7,15 +7,21 @@ Width 2560=1254
 FontWeight=50
 PreviewSize=22
 
+[Desktop Entry]
+DefaultProfile=Shell.profile
+
 [DetailsMode]
 FontWeight=50
 PreviewSize=22
 UseSystemFont=false
 
+[Favorite Profiles]
+Favorites=
+
 [General]
 GlobalViewProps=false
 Version=200
-ViewPropsTimestamp=2019,5,3,14,52,40
+ViewPropsTimestamp=2019,9,15,22,19,34
 
 [IconsMode]
 FontWeight=50
@@ -23,19 +29,39 @@ PreviewSize=176
 
 [KPropertiesDialog]
 Height 1600=1011
+Height 800=542
+Width 1280=506
 Width 2560=949
 
 [MainWindow]
-Height 1600=1523
-Height 800=765
+Height 1080=855
+Height 1143=1111
+Height 1600=1600
+Height 540=540
+Height 800=746
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAwAAAAAAAAGzAAAFtfwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAQA////+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAA+AAAFtQAAAJEA////AAAAAQAAAAAAAAAA/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAAAD/////AAAABAD///8AAAADAAAAAAAAAAD8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAA/////wAAAAQA////AAADJwAABbUAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+State=AAAA/wAAAAD9AAAAAwAAAAAAAAC2AAACxPwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAmAAAAZgAAAAoBAAAD+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAAmAAACxAAAAFoBAAADAAAAAQAAALgAAALk/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAACYAAALkAAAACgEAAAMAAAADAAAFAAAAAC78AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAAAAAFAAAAAAoBAAADAAAERQAAAsQAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
 ToolBarsMovable=Disabled
-Width 1280=629
-Width 2560=1254
+Width 1280=1276
+Width 1829=1829
+Width 1920=1280
+Width 2560=2560
+Width 960=960
+Window-Maximized 1600x2560=true
+
+[Notification Messages]
+ConfirmEmptyTrash=true
+ShowPasteUnprintableWarning=false
+
+[Open-with settings]
+CompletionMode=1
+History=ble,kate,ark,code
 
 [PreviewSettings]
 Plugins=audiothumbnail,comicbookthumbnail,djvuthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,webarchivethumbnail
+
+[Search]
+What=Content
 
 [SettingsDialog]
 Height 1600=761
@@ -43,4 +69,9 @@ Width 2560=1123
 
 [ViewPropertiesDialog]
 Height 1600=486
+Height 800=454
+Width 1280=372
 Width 2560=680
+
+[kuick-copy]
+Paths[$e]=/run/media/matthias/Part
