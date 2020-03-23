@@ -5,22 +5,22 @@ interval=1000
 [weather]
 command=bash ~/.config/i3blocks/weather.sh
 interval=1000
-label=
+label= 
 
 [memory]
 command=bash ~/.config/i3blocks/memory.sh
-label=
+label= 
 interval=10
 
 [wifi]
 command=bash ~/.config/i3blocks/wifi.sh
-label=
+label= 
 interval=10
 
 [battery]
 command=bash ~/.config/i3blocks/bat.sh
 interval=10
-label=
+label= 
 
 [time]
 command=date +" %d.%m.%Y  %H:%M"

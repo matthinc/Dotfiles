@@ -30,19 +30,26 @@
 
 (menu-bar-mode -1)
 
+;;(setq debug-on-error t)
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(setq auto-save-default nil)
 (setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
+(setq make-backup-files nil)
 (setq auto-save-file-name-transforms
       `((".*" "~/.emacs.d/auto-save/" t)))
 
 (setq create-lockfiles nil)
+
+(remove-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; Line numbers
 (global-linum-mode t)
 
 ;; Indentation
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 (setq-local javascript-indent-level 2)
 (setq js-indent-level 2)
 
@@ -84,8 +91,7 @@
   (setq dired-sidebar-theme 'vscode)
   (setq dired-sidebar-face 'dired-sidebar-face-sans)
   (setq dired-listing-switches "-aBhl  --group-directories-first")
-  (setq dired-sidebar-use-custom-font t)
-  )
+  (setq dired-sidebar-use-custom-font t))
 
 ;; ivy
 (use-package ivy
@@ -140,6 +146,49 @@
 ;; company
 (use-package company :ensure t :pin melpa)
 
+;; markdown-mode
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+;; tide (ts/tsx)
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
+
+;;+--------------------------------+
+;;|             	       	   |
+;;| Go mode                        |
+;;|                                |
+;;+--------------------------------+
+
+(add-hook 'go-mode-hook (lambda ()
+  (set (make-local-variable 'company-backends) '(company-go))
+  (setq indent-tabs-mode nil)
+  (company-mode)))
+
+;;+--------------------------------+
+;;|             	       	   |
+;;| Org mode                       |
+;;|                                |
+;;+--------------------------------+
+
+;; Auto-export org files to html when saved 
+;;(defun org-mode-export-hook()
+;;  "Auto export html"
+;;  (when (eq major-mode 'org-mode)
+;;    (org-html-export-to-html)))
+
+(add-hook 'after-save-hook 'org-mode-export-hook)
+(setq org-startup-folded nil)
+
 ;;+--------------------------------+
 ;;|             	       	   |
 ;;| Assign modes to extensions     |
@@ -147,6 +196,9 @@
 ;;+--------------------------------+
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.hs\\'" . haskell-mode))
 
 ;;+--------------------------------+
 ;;|            	       	           |
@@ -161,14 +213,42 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(custom-enabled-themes (quote (tsdh-light)))
+ '(custom-enabled-themes (quote (flucui-light)))
+ '(custom-safe-themes
+   (quote
+    ("0eccc893d77f889322d6299bec0f2263bffb6d3ecc79ccef76f1a2988859419e" "efbe8f0a87281bcfa5e560d5ca10268c735de3a3bb160b54c520d02609aed9d8" "a11808699b77d62f5d10dd73cd474af3057d84cceac8f0301b82ad3e4fb0433e" "a3b9c613ca9beaae6539fd76ce09c78baed7700a7f513dc33a1069592f8bbe07" "672bb062b9c92e62d7c370897b131729c3f7fd8e8de71fc00d70c5081c80048c" "0dd2666921bd4c651c7f8a724b3416e95228a13fca1aa27dc0022f4e023bf197" "e6ccd0cc810aa6458391e95e4874942875252cd0342efd5a193de92bfbb6416b" default)))
  '(js-indent-level 2 t)
  '(package-selected-packages
    (quote
-    (company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package))))
+    (haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-latex-slide-title-face ((t (:inherit (variable-pitch font-lock-type-face) :weight normal :height 1.01)))))
+ '(cursor ((t (:background "medium blue" :foreground "white"))))
+ '(font-latex-slide-title-face ((t (:inherit (variable-pitch font-lock-type-face) :weight normal :height 1.01))))
+ '(org-done ((t (:foreground "SeaGreen4" :weight thin))))
+ '(org-level-1 ((t (:inherit outline-1 :foreground "black" :weight bold))))
+ '(org-level-3 ((t (:inherit nil))))
+ '(org-special-keyword ((t (:foreground "dim gray"))))
+ '(org-todo ((t (:foreground "red" :weight bold))))
+ '(region ((t (:background "blue4" :foreground "white")))))
+
+;;+--------------------------------+
+;;|            	       	           |
+;;| Custom shortcuts               |
+;;|                                |
+;;+--------------------------------+
+
+(defun terminal-right ()
+  (interactive)
+  (split-window-below)
+  (other-window 1)
+  (shrink-window 10)
+  (ansi-term "/usr/bin/zsh"))
+
+(global-set-key (kbd "C-ö t") 'terminal-right)
+(global-set-key (kbd "C-ö o") 'org-mode)
+(global-set-key (kbd "C-ö c") 'company-mode)
+(global-set-key (kbd "C-ö m") 'magit)
