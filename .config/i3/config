@@ -22,6 +22,7 @@ for_window [window_type="menu"] floating enable
 set $mod Mod4
 
 exec_always --no-startup-id compton -b
+exec_always --no-startup-id nitrogen --restore
 
 bindsym $mod+c exec dolphin
 bindsym $mod+Return exec konsole
@@ -108,7 +109,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-        status_command i3blocks -c ~/.config/i3blocks/config
+    status_command i3blocks -c ~/.config/i3blocks/config
 	i3bar_command i3bar
 	font pango:DejaVu Sans Mono, Awesome 8
         tray_output primary
@@ -117,8 +118,8 @@ bar {
 	colors {
 		background #000000
 		statusline #ffffff
-		separator #ffffff99
-		inactive_workspace #00000000 #00000000 #ffffff
-		focused_workspace  #999999ff #888888ff #000000
+		separator #dddddd
+		inactive_workspace #333333 #333333 #dddddd
+		focused_workspace  #999999 #999999 #0000ff
 	}  
 }

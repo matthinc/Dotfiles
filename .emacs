@@ -1,6 +1,6 @@
 ;;+--------------------------------+
-;;|           	       	           |
-;;| General configuration      	   |
+;;|                                |
+;;| General configuration          |
 ;;|                                |
 ;;+--------------------------------+
 
@@ -63,7 +63,7 @@
 (setq explicit-shell-file-name "/usr/bin/zsh")
 
 ;;+--------------------------------+
-;;|             	       	   |
+;;|             	       	       |
 ;;| Package configurations         |
 ;;|                                |
 ;;+--------------------------------+
@@ -164,7 +164,7 @@
          (before-save . tide-format-before-save)))
 
 ;;+--------------------------------+
-;;|             	       	   |
+;;|             	       	       |
 ;;| Go mode                        |
 ;;|                                |
 ;;+--------------------------------+
@@ -175,7 +175,7 @@
   (company-mode)))
 
 ;;+--------------------------------+
-;;|             	       	   |
+;;|             	       	       |
 ;;| Org mode                       |
 ;;|                                |
 ;;+--------------------------------+
@@ -190,7 +190,7 @@
 (setq org-startup-folded nil)
 
 ;;+--------------------------------+
-;;|             	       	   |
+;;|             	       	       |
 ;;| Assign modes to extensions     |
 ;;|                                |
 ;;+--------------------------------+
@@ -199,6 +199,8 @@
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.hs\\'" . haskell-mode))
+(add-to-list 'auto-mode-alist '("\\Dockerfile\\'" . dockerfile-mode))
+(add-to-list 'auto-mode-alist '("\\.glxl\\'" . glxl-mode))
 
 ;;+--------------------------------+
 ;;|            	       	           |
@@ -220,7 +222,7 @@
  '(js-indent-level 2 t)
  '(package-selected-packages
    (quote
-    (haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package))))
+    (glsl-mode eglot nyan-mode dockerfile-mode md4rd haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

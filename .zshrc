@@ -134,3 +134,4 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
+alias tmp='cd $(mktemp -d)'

@@ -1,6 +1,8 @@
-[twitter]
-command=bash ~/.config/i3blocks/hashtags.sh
-interval=1000
+[corona]
+interval=500
+command=bash ~/.config/i3blocks/corona.sh
+label=Corona: 
+
 
 [weather]
 command=bash ~/.config/i3blocks/weather.sh
