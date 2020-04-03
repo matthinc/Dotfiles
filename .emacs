@@ -62,6 +62,26 @@
 ;; Terminal
 (setq explicit-shell-file-name "/usr/bin/zsh")
 
+;; nyan
+(nyan-mode)
+
+;; Mouse wheel configuration
+(setq mouse-wheel-scroll-amount '(0.005))
+(setq mouse-wheel-progressive-speed nil)
+(setq ring-bell-function 'ignore)
+
+(setq redisplay-dont-pause t
+  scroll-margin 1
+  scroll-step 1
+  scroll-conservatively 10000
+  scroll-preserve-screen-position 1)
+
+;; Untabify on save
+(defun untabify-on-save ()
+    (untabify (point-min) (point-max)))
+
+(add-hook 'before-save-hook 'untabify-on-save)
+
 ;;+--------------------------------+
 ;;|             	       	       |
 ;;| Package configurations         |
@@ -146,6 +166,9 @@
 ;; company
 (use-package company :ensure t :pin melpa)
 
+;; eglot
+(use-package eglot :ensure t)
+
 ;; markdown-mode
 (use-package markdown-mode
   :ensure t
@@ -162,17 +185,6 @@
   :hook ((typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
          (before-save . tide-format-before-save)))
-
-;;+--------------------------------+
-;;|             	       	       |
-;;| Go mode                        |
-;;|                                |
-;;+--------------------------------+
-
-(add-hook 'go-mode-hook (lambda ()
-  (set (make-local-variable 'company-backends) '(company-go))
-  (setq indent-tabs-mode nil)
-  (company-mode)))
 
 ;;+--------------------------------+
 ;;|             	       	       |
@@ -204,6 +216,22 @@
 
 ;;+--------------------------------+
 ;;|            	       	           |
+;;| Eglot                          |
+;;|                                |
+;;+--------------------------------+
+
+(defun eglot-enabled ()
+  (eglot-ensure)
+  (company-mode))
+
+(add-hook 'c-mode-hook 'eglot-enabled)
+(add-hook 'go-mode-hook 'eglot-enabled)
+(add-hook 'python-mode-hook 'eglot-enabled)
+(add-hook 'haskell-mode-hook 'eglot-enabled)
+(add-hook 'shell-script-mode-hook 'eglot-enabled)
+
+;;+--------------------------------+
+;;|            	       	           |
 ;;| Variables and packages         |
 ;;|                                |
 ;;+--------------------------------+
@@ -222,7 +250,7 @@
  '(js-indent-level 2 t)
  '(package-selected-packages
    (quote
-    (glsl-mode eglot nyan-mode dockerfile-mode md4rd haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package))))
+    (dired-rainbow glsl-mode nyan-mode dockerfile-mode md4rd haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
