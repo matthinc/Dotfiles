@@ -83,7 +83,7 @@
 (add-hook 'before-save-hook 'untabify-on-save)
 
 ;;+--------------------------------+
-;;|             	       	       |
+;;|                                |
 ;;| Package configurations         |
 ;;|                                |
 ;;+--------------------------------+
@@ -187,7 +187,7 @@
          (before-save . tide-format-before-save)))
 
 ;;+--------------------------------+
-;;|             	       	       |
+;;|                                |
 ;;| Org mode                       |
 ;;|                                |
 ;;+--------------------------------+
@@ -202,7 +202,7 @@
 (setq org-startup-folded nil)
 
 ;;+--------------------------------+
-;;|             	       	       |
+;;|                                |
 ;;| Assign modes to extensions     |
 ;;|                                |
 ;;+--------------------------------+
@@ -213,9 +213,10 @@
 (add-to-list 'auto-mode-alist '("\\.hs\\'" . haskell-mode))
 (add-to-list 'auto-mode-alist '("\\Dockerfile\\'" . dockerfile-mode))
 (add-to-list 'auto-mode-alist '("\\.glxl\\'" . glxl-mode))
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
 ;;+--------------------------------+
-;;|            	       	           |
+;;|                                |
 ;;| Eglot                          |
 ;;|                                |
 ;;+--------------------------------+
@@ -231,7 +232,7 @@
 (add-hook 'shell-script-mode-hook 'eglot-enabled)
 
 ;;+--------------------------------+
-;;|            	       	           |
+;;|                                |
 ;;| Variables and packages         |
 ;;|                                |
 ;;+--------------------------------+
@@ -266,7 +267,7 @@
  '(region ((t (:background "blue4" :foreground "white")))))
 
 ;;+--------------------------------+
-;;|            	       	           |
+;;|                                |
 ;;| Custom shortcuts               |
 ;;|                                |
 ;;+--------------------------------+

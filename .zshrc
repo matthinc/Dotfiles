@@ -7,7 +7,7 @@ plugins=(git zsh-autosuggestions z)
 source $ZSH/oh-my-zsh.sh
 
 #Env
-export EDITOR=emacs
+export EDITOR=emacs -nw
 
 # Aliases
 alias tmp='cd $(mktemp -d)'
