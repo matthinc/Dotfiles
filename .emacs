@@ -48,7 +48,7 @@
 (global-linum-mode t)
 
 ;; Indentation
-(setq-default indent-tabs-mode nil)
+;; (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq-local javascript-indent-level 2)
 (setq js-indent-level 2)
@@ -76,17 +76,25 @@
   scroll-conservatively 10000
   scroll-preserve-screen-position 1)
 
+;; DEPRECATED BECAUSE OF EDITORCONFIG
 ;; Untabify on save
-(defun untabify-on-save ()
-    (untabify (point-min) (point-max)))
+;;(defun untabify-on-save ()
+;;    (untabify (point-min) (point-max)))
 
-(add-hook 'before-save-hook 'untabify-on-save)
+;;
+;; (add-hook 'before-save-hook 'untabify-on-save)
 
 ;;+--------------------------------+
 ;;|                                |
 ;;| Package configurations         |
 ;;|                                |
 ;;+--------------------------------+
+
+;; editorconfig
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
 
 ;; ag
 (use-package ag
@@ -165,6 +173,8 @@
 
 ;; company
 (use-package company :ensure t :pin melpa)
+(define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+(define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
 
 ;; eglot
 (use-package eglot :ensure t)
@@ -198,7 +208,6 @@
 ;;  (when (eq major-mode 'org-mode)
 ;;    (org-html-export-to-html)))
 
-(add-hook 'after-save-hook 'org-mode-export-hook)
 (setq org-startup-folded nil)
 
 ;;+--------------------------------+
@@ -214,6 +223,7 @@
 (add-to-list 'auto-mode-alist '("\\Dockerfile\\'" . dockerfile-mode))
 (add-to-list 'auto-mode-alist '("\\.glxl\\'" . glxl-mode))
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+(add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode))
 
 ;;+--------------------------------+
 ;;|                                |
@@ -233,6 +243,35 @@
 
 ;;+--------------------------------+
 ;;|                                |
+;;| Yasnippet                      |
+;;|                                |
+;;+--------------------------------+
+
+(yas-global-mode 1)
+
+;;+--------------------------------+
+;;|                                |
+;;| Comment tags                   |
+;;|                                |
+;;+--------------------------------+
+
+(setq comment-tags-keymap-prefix (kbd "C-c t"))
+(with-eval-after-load "comment-tags"
+  (setq comment-tags-keyword-faces
+        `(("TODO" . ,(list :weight 'bold :foreground "#34c9eb"))
+          ("FIXME" . ,(list :weight 'bold :foreground "#ffb833"))
+          ("BUG" . ,(list :weight 'bold :foreground "#ff003c"))
+          ("HACK" . ,(list :weight 'bold :foreground "#854900"))))
+  (setq comment-tags-comment-start-only t
+        comment-tags-require-colon t
+        comment-tags-case-sensitive t
+        comment-tags-show-faces t
+        comment-tags-lighter nil))
+
+(add-hook 'find-file-hook 'comment-tags-mode)
+
+;;+--------------------------------+
+;;|                                |
 ;;| Variables and packages         |
 ;;|                                |
 ;;+--------------------------------+
@@ -247,11 +286,11 @@
  '(custom-enabled-themes (quote (flucui-light)))
  '(custom-safe-themes
    (quote
-    ("0eccc893d77f889322d6299bec0f2263bffb6d3ecc79ccef76f1a2988859419e" "efbe8f0a87281bcfa5e560d5ca10268c735de3a3bb160b54c520d02609aed9d8" "a11808699b77d62f5d10dd73cd474af3057d84cceac8f0301b82ad3e4fb0433e" "a3b9c613ca9beaae6539fd76ce09c78baed7700a7f513dc33a1069592f8bbe07" "672bb062b9c92e62d7c370897b131729c3f7fd8e8de71fc00d70c5081c80048c" "0dd2666921bd4c651c7f8a724b3416e95228a13fca1aa27dc0022f4e023bf197" "e6ccd0cc810aa6458391e95e4874942875252cd0342efd5a193de92bfbb6416b" default)))
+	("0eccc893d77f889322d6299bec0f2263bffb6d3ecc79ccef76f1a2988859419e" "efbe8f0a87281bcfa5e560d5ca10268c735de3a3bb160b54c520d02609aed9d8" "a11808699b77d62f5d10dd73cd474af3057d84cceac8f0301b82ad3e4fb0433e" "a3b9c613ca9beaae6539fd76ce09c78baed7700a7f513dc33a1069592f8bbe07" "672bb062b9c92e62d7c370897b131729c3f7fd8e8de71fc00d70c5081c80048c" "0dd2666921bd4c651c7f8a724b3416e95228a13fca1aa27dc0022f4e023bf197" "e6ccd0cc810aa6458391e95e4874942875252cd0342efd5a193de92bfbb6416b" default)))
  '(js-indent-level 2 t)
  '(package-selected-packages
    (quote
-    (dired-rainbow glsl-mode nyan-mode dockerfile-mode md4rd haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package))))
+	(protobuf-mode comment-tags yasnippet editorconfig dired-rainbow glsl-mode nyan-mode dockerfile-mode md4rd haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -283,3 +322,4 @@
 (global-set-key (kbd "C-ö o") 'org-mode)
 (global-set-key (kbd "C-ö c") 'company-mode)
 (global-set-key (kbd "C-ö m") 'magit)
+(global-set-key (kbd "C-ö s") 'yas-insert-snippet)
