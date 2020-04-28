@@ -4,6 +4,9 @@
 ;;|                                |
 ;;+--------------------------------+
 
+;; Prevent `function definition is void error`
+(package-install-selected-packages)
+
 (put 'downcase-region 'disabled nil)
 
 (defvar gnutls-algorithm-priority "NORMAL:-VERS-TLS1.2")
@@ -18,6 +21,12 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+;; Dashboard
+(dashboard-setup-startup-hook)
+
+;; Which key
+(which-key-mode)
 
 ;; General configuration
 (setq inhibit-startup-screen t)
@@ -290,7 +299,7 @@
  '(js-indent-level 2 t)
  '(package-selected-packages
    (quote
-	(protobuf-mode comment-tags yasnippet editorconfig dired-rainbow glsl-mode nyan-mode dockerfile-mode md4rd haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package))))
+	(auctex-latexmk dashboard protobuf-mode comment-tags yasnippet editorconfig dired-rainbow glsl-mode nyan-mode dockerfile-mode md4rd haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package yasnippet))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
