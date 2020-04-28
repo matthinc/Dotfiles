@@ -110,16 +110,15 @@ bindsym $mod+r mode "resize"
 
 bar {
     status_command i3blocks -c ~/.config/i3blocks/config
-	i3bar_command i3bar
-	font pango:DejaVu Sans Mono, Awesome 8
-        tray_output primary
-	separator_symbol
-	position top
-	colors {
-		background #000000
-		statusline #ffffff
-		separator #dddddd
-		inactive_workspace #333333 #333333 #dddddd
-		focused_workspace  #999999 #999999 #0000ff
-	}  
+    i3bar_command i3bar
+    font pango:DejaVu Sans Mono, Awesome 8
+    tray_output primary
+    position top
+    colors {
+        background #00000
+        statusline #ffffff
+        separator #dddddd
+        inactive_workspace #333333 #333333 #dddddd
+        focused_workspace  #999999 #999999 #0000ff
+    }  
 }
