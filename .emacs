@@ -299,7 +299,7 @@
  '(js-indent-level 2 t)
  '(package-selected-packages
    (quote
-	(auctex-latexmk dashboard protobuf-mode comment-tags yasnippet editorconfig dired-rainbow glsl-mode nyan-mode dockerfile-mode md4rd haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package yasnippet))))
+	(google-translate spotify auctex-latexmk dashboard protobuf-mode comment-tags yasnippet editorconfig dired-rainbow glsl-mode nyan-mode dockerfile-mode md4rd haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package yasnippet))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -332,3 +332,5 @@
 (global-set-key (kbd "C-ö c") 'company-mode)
 (global-set-key (kbd "C-ö m") 'magit)
 (global-set-key (kbd "C-ö s") 'yas-insert-snippet)
+(global-set-key (kbd "C-ö C-g t") 'google-translate-query-translate)
+(put 'upcase-region 'disabled nil)
