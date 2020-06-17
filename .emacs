@@ -1,3 +1,51 @@
+;; Melpa package manager
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
+(defvar gnutls-algorithm-priority "NORMAL:-VERS-TLS1.2")
+
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+
+;;+--------------------------------+
+;;|                                |
+;;| Variables and packages         |
+;;|                                |
+;;+--------------------------------+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
+ '(custom-enabled-themes (quote (flucui-light)))
+ '(custom-safe-themes
+   (quote
+	("0eccc893d77f889322d6299bec0f2263bffb6d3ecc79ccef76f1a2988859419e" "efbe8f0a87281bcfa5e560d5ca10268c735de3a3bb160b54c520d02609aed9d8" "a11808699b77d62f5d10dd73cd474af3057d84cceac8f0301b82ad3e4fb0433e" "a3b9c613ca9beaae6539fd76ce09c78baed7700a7f513dc33a1069592f8bbe07" "672bb062b9c92e62d7c370897b131729c3f7fd8e8de71fc00d70c5081c80048c" "0dd2666921bd4c651c7f8a724b3416e95228a13fca1aa27dc0022f4e023bf197" "e6ccd0cc810aa6458391e95e4874942875252cd0342efd5a193de92bfbb6416b" default)))
+ '(js-indent-level 2 t)
+ '(package-selected-packages
+   (quote
+	(which-key yaml-mode google-translate spotify auctex-latexmk dashboard protobuf-mode comment-tags yasnippet editorconfig dired-rainbow glsl-mode nyan-mode dockerfile-mode md4rd haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag use-package yasnippet))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "medium blue" :foreground "white"))))
+ '(font-latex-slide-title-face ((t (:inherit (variable-pitch font-lock-type-face) :weight normal :height 1.01))))
+ '(org-done ((t (:foreground "SeaGreen4" :weight thin))))
+ '(org-level-1 ((t (:inherit outline-1 :foreground "black" :weight bold))))
+ '(org-level-3 ((t (:inherit nil))))
+ '(org-special-keyword ((t (:foreground "dim gray"))))
+ '(org-todo ((t (:foreground "red" :weight bold))))
+ '(region ((t (:background "blue4" :foreground "white")))))
+
 ;;+--------------------------------+
 ;;|                                |
 ;;| General configuration          |
@@ -9,18 +57,8 @@
 
 (put 'downcase-region 'disabled nil)
 
-(defvar gnutls-algorithm-priority "NORMAL:-VERS-TLS1.2")
-
-;; Melpa package manager
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-
 (setq package-enable-at-startup nil)
-(package-initialize)
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
 
 ;; Dashboard
 (dashboard-setup-startup-hook)
@@ -30,10 +68,6 @@
 
 ;; General configuration
 (setq inhibit-startup-screen t)
-
-(add-to-list 'default-frame-alist '(font . "Hack 10"))
-
-(set-face-attribute 'default t :font "Hack 10")
 
 (tool-bar-mode -1)
 
@@ -73,17 +107,6 @@
 
 ;; nyan
 (nyan-mode)
-
-;; Mouse wheel configuration
-(setq mouse-wheel-scroll-amount '(0.005))
-(setq mouse-wheel-progressive-speed nil)
-(setq ring-bell-function 'ignore)
-
-(setq redisplay-dont-pause t
-  scroll-margin 1
-  scroll-step 1
-  scroll-conservatively 10000
-  scroll-preserve-screen-position 1)
 
 ;; DEPRECATED BECAUSE OF EDITORCONFIG
 ;; Untabify on save
@@ -129,17 +152,6 @@
   (setq dired-sidebar-face 'dired-sidebar-face-sans)
   (setq dired-listing-switches "-aBhl  --group-directories-first")
   (setq dired-sidebar-use-custom-font t))
-
-;; ivy
-(use-package ivy
-  :config
-  (ivy-mode)
-  (setq ivy-re-builders-alist
-        '((t . ivy--regex-ignore-order)))
-  :bind
-  ("C-S-b" . 'ivy-switch-buffer)
-  ("C-S-f" . 'projectile-find-file)
-  :ensure t)
 
 ;; org-bullets
 (use-package org-bullets
@@ -281,41 +293,6 @@
 
 ;;+--------------------------------+
 ;;|                                |
-;;| Variables and packages         |
-;;|                                |
-;;+--------------------------------+
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(custom-enabled-themes (quote (flucui-light)))
- '(custom-safe-themes
-   (quote
-	("0eccc893d77f889322d6299bec0f2263bffb6d3ecc79ccef76f1a2988859419e" "efbe8f0a87281bcfa5e560d5ca10268c735de3a3bb160b54c520d02609aed9d8" "a11808699b77d62f5d10dd73cd474af3057d84cceac8f0301b82ad3e4fb0433e" "a3b9c613ca9beaae6539fd76ce09c78baed7700a7f513dc33a1069592f8bbe07" "672bb062b9c92e62d7c370897b131729c3f7fd8e8de71fc00d70c5081c80048c" "0dd2666921bd4c651c7f8a724b3416e95228a13fca1aa27dc0022f4e023bf197" "e6ccd0cc810aa6458391e95e4874942875252cd0342efd5a193de92bfbb6416b" default)))
- '(js-indent-level 2 t)
- '(package-selected-packages
-   (quote
-	(google-translate spotify auctex-latexmk dashboard protobuf-mode comment-tags yasnippet editorconfig dired-rainbow glsl-mode nyan-mode dockerfile-mode md4rd haskell-mode latex-preview-pane zeno-theme habamax-theme flucui-themes hemera-theme one-themes company-go go-complete go-mode tide typescript-mode markdown-mode gandalf-theme company git-gutter magit vscode-icon rjsx-mode projectile leuven-theme dired-sidebar ag ivy use-package yasnippet))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(cursor ((t (:background "medium blue" :foreground "white"))))
- '(font-latex-slide-title-face ((t (:inherit (variable-pitch font-lock-type-face) :weight normal :height 1.01))))
- '(org-done ((t (:foreground "SeaGreen4" :weight thin))))
- '(org-level-1 ((t (:inherit outline-1 :foreground "black" :weight bold))))
- '(org-level-3 ((t (:inherit nil))))
- '(org-special-keyword ((t (:foreground "dim gray"))))
- '(org-todo ((t (:foreground "red" :weight bold))))
- '(region ((t (:background "blue4" :foreground "white")))))
-
-;;+--------------------------------+
-;;|                                |
 ;;| Custom shortcuts               |
 ;;|                                |
 ;;+--------------------------------+
@@ -333,4 +310,8 @@
 (global-set-key (kbd "C-ö m") 'magit)
 (global-set-key (kbd "C-ö s") 'yas-insert-snippet)
 (global-set-key (kbd "C-ö C-g t") 'google-translate-query-translate)
-(put 'upcase-region 'disabled nil)
+(global-set-key (kbd "C-ö a") 'ag)
+;; Helm
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
