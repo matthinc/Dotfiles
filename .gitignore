@@ -12,5 +12,12 @@
 !.config/rofi/
 !.config/rofi/*
 
+# termite
+!.config/
+!.config/termite/
+!.config/termite/config
+
+
 # zsh
 !.zshrc
+
