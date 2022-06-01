@@ -1,0 +1,16 @@
+*
+
+!.gitignore
+
+# i3
+!.config/
+!.config/i3/
+!.config/i3/config
+
+# rofi
+!.config/
+!.config/rofi/
+!.config/rofi/*
+
+# zsh
+!.zshrc
